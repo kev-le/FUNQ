@@ -25,14 +25,11 @@ export default class HomeScreen extends React.Component {
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
               <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/leaf.png')
-                    : require('../assets/images/robot-prod.png')
-                }
+                source={require('../assets/images/leaf.png')}
                 style={styles.welcomeImage}
               />
-              <Text style={styles.getStartedText}>FUNQ</Text> 
+              <Text style={styles.getStartedText}>HOW DO YOU EXPERIENCE FUNQ?</Text> 
+              <Text style={styles.descriptionText}>FUNQ: a state of apathy, lack of motivation/support, helplessness, or any way we get stuck in a rabbit hole</Text>
             </View>
 
             <View style={styles.helpContainer}>
@@ -97,8 +94,8 @@ const styles = StyleSheet.create({
   welcomeContainer: {
     zIndex: 1,
     alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 0,
+    marginBottom: 0,
   },
   welcomeImage: {
     zIndex: -1,
@@ -106,7 +103,7 @@ const styles = StyleSheet.create({
     height: 400,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
+    marginLeft: -35,
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -124,11 +121,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    marginTop: 10,
-    fontSize: 50,
+    marginTop: -50,
+    fontSize: 18,
     color: 'rgba(96,100,109, 1)',
-    lineHeight: 50,
+    lineHeight: 18,
     textAlign: 'center',
+  },
+  descriptionText: {
+    padding: 12,
+    textAlign: 'center'
   },
   tabBarInfoContainer: {
     position: 'absolute',

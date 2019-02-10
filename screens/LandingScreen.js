@@ -39,17 +39,15 @@ export default class LandingScreen extends React.Component {
             <View style={styles.helpContainer}>
               <Button
               onPress={() => this.props.navigation.navigate('Chatbot')}
-              title='Discuss the Pomodoro technique'
-              style={{width: 300, marginTop: 20, opacity:0.7}} />
+              title='7-8-4 Breathing'
+              style={{width: 300, marginTop: 20, opacity:0.7}} 
+              buttonStyle={{backgroundColor: '#86a2dd'}}
+              />
               <Button
               onPress={() => this.props.navigation.navigate('Chatbot')}
-              title='Discuss letters of gratitude'
+              title='Letters of Gratitude'
               style={{width: 300, marginTop: 20, opacity: 0.5}}
-              buttonStyle={{backgroundColor: 'red'}}/>
-              <Button
-              onPress={() => this.props.navigation.navigate('Chatbot')}
-              title='Discuss a morning jog'
-              style={{width: 300, marginTop: 20, opacity:0.7}} />
+              buttonStyle={{backgroundColor: '#c96161'}}/>
             </View>
           </ScrollView>
         </View>

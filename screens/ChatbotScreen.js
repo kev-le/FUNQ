@@ -35,8 +35,8 @@ export default class ChatbotScreen extends React.Component {
       messages: [
         {
           _id: 5,
-          text: 'I agree, this technique has made my day to day tasks easier to focus on',
-          createdAt: new Date(),
+          text: 'Yeah, it was pretty hard to get started, but it ended up being really insightful to me',
+          createdAt: new Date(2019, 1, 10, 11, 31),
           user: {
             _id: 4,
             name: 'React Native',
@@ -45,8 +45,8 @@ export default class ChatbotScreen extends React.Component {
         },
         {
           _id: 4,
-          text: 'Pomodoro has helped me be so much more productive!',
-          createdAt: new Date(),
+          text: 'Anyone having difficulty with this one?',
+          createdAt: new Date(2019, 1, 10, 11, 19),
           user: {
             _id: 3,
             name: 'React Native',
@@ -55,8 +55,8 @@ export default class ChatbotScreen extends React.Component {
         },
         {
           _id: 3,
-          text: 'Sounds cool! Will try it when I work on my project today',
-          createdAt: new Date(),
+          text: 'Sounds interesting! Will try it after work today',
+          createdAt: new Date(2019, 1, 10, 11, 18),
           user: {
             _id: 2,
             name: 'React Native',
@@ -75,7 +75,7 @@ export default class ChatbotScreen extends React.Component {
         },
         {
           _id: 1,
-          text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
+          text: 'Try writing 3 letters of gratitude to yourself, a friend, a family member, and then send them!',
           createdAt: new Date(2019, 1, 10, 10, 32),
           user: {
             _id: 4,
@@ -97,7 +97,6 @@ export default class ChatbotScreen extends React.Component {
   onPressAvatar(messages = []) {
     console.log('hello world');
     console.log(messages);
-    //foo.goBack();
     messages.navigate('GroupMember');
   }
 
