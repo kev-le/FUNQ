@@ -22,13 +22,27 @@ export default class LandingScreen extends React.Component {
 
   state = {
     isModalVisible: false,
+    isModalVisible2: false,
     goal1: false,
     goal2: false,
     goal3: false,
+    leafEvolve: false,
   };
 
-  _toggleModal = () =>
-    this.setState({ isModalVisible: !this.state.isModalVisible });
+  _toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible, isModalVisible2: false })
+  };
+
+  _closeModal2 = () => {
+    this.setState({ isModalVisible2: false})
+  };
+
+  _triggerModal = () => {
+    if (this.state.goal1 && this.state.goal2 && this.state.goal3) {
+      this.setState({ isModalVisible2: true });
+      console.log('hey');
+    }
+  }
 
   render() {
     return (
@@ -40,14 +54,16 @@ export default class LandingScreen extends React.Component {
               <TouchableOpacity onPress={this._toggleModal}>
                 <Text>View Weekly Goals</Text>
               </TouchableOpacity>
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/leaf.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
+              { !this.state.leafEvolve ?
+                (<Image
+                  source={require('../assets/images/leaf.png')}
+                  style={styles.welcomeImage}
+                />) :
+                (<Image
+                  source={require('../assets/images/tree.png')}
+                  style={styles.welcomeImage2}
+                />)}
+              
             </View>
 
             <View style={styles.helpContainer}>
@@ -65,7 +81,7 @@ export default class LandingScreen extends React.Component {
             </View>
           </ScrollView>
         </View>
-        <Modal isVisible={this.state.isModalVisible} style={styles.modal} onBackdropPress={() => this.setState({ isVisible: false })} >
+        <Modal isVisible={this.state.isModalVisible} style={styles.modal} onModalHide={() => this._triggerModal()}>
           <View style={{ flex: 1 }}>
             <Text style={styles.getStartedText}>Your Weekly Goals</Text>
             <CheckBox
@@ -92,6 +108,21 @@ export default class LandingScreen extends React.Component {
             </View>
           </View>
         </Modal>
+        <Modal isVisible={this.state.isModalVisible2} style={ styles.modal2 } onModalHide={() => this.setState({leafEvolve : true})}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.getStartedText}>Congratulations! </Text>
+            <Text style={{ fontSize: 20, textAlign: 'center'  }}> You're one step out of the FUNQ! </Text>
+            <View style={{flex: 1, justifyContent: 'flex-end'}}>
+              <Button
+              onPress={this._closeModal2}
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              title='Done' />
+            </View>
+          </View>
+          
+        </Modal>
+        
       </ImageBackground>
     );
   }
@@ -136,6 +167,11 @@ const styles = StyleSheet.create({
     maxHeight: 500,
     marginTop: 150,
   },
+  modal2: {
+    backgroundColor: 'white',
+    maxHeight: 200,
+    marginTop: 150,
+  },
   container: {
     flex: 1,
   },
@@ -156,9 +192,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    zIndex: -1,
     width: 200,
     height: 300,
+    resizeMode: 'contain',
+    marginTop: 3,
+    marginLeft: -10,
+  },
+  welcomeImage2: {
+    width: 275,
+    height: 375,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
