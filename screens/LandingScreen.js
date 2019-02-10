@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StyleSheet,
@@ -11,7 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { Button } from 'react-native-elements'
+import { Button} from 'react-native-elements';
 
 export default class LandingScreen extends React.Component {
   static navigationOptions = {
@@ -20,36 +21,38 @@ export default class LandingScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Text style={styles.getStartedText}>Good Afternoon, Cathy</Text> 
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/flower.jpg')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+      <ImageBackground source={require('../assets/images/background-2.jpeg')} style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={styles.welcomeContainer}>
+              <Text style={styles.getStartedText}>Good Afternoon, Cathy</Text> 
+              <Image
+                source={
+                  __DEV__
+                    ? require('../assets/images/leaf.png')
+                    : require('../assets/images/robot-prod.png')
+                }
+                style={styles.welcomeImage}
+              />
+            </View>
 
-          <View style={styles.helpContainer}>
-            <Button
-            onPress={() => this.props.navigation.navigate('Chatbot')}
-            title='Discuss the Pomodoro technique'
-            style={{width: 300, marginTop: 20}} />
-            <Button
-            onPress={() => this.props.navigation.navigate('Chatbot')}
-            title='Discuss letters of gratitude'
-            style={{width: 300, marginTop: 20}} />
-            <Button
-            onPress={() => this.props.navigation.navigate('Chatbot')}
-            title='Discuss a morning jog'
-            style={{width: 300, marginTop: 20}} />
-          </View>
-        </ScrollView>
-      </View>
+            <View style={styles.helpContainer}>
+              <Button
+              onPress={() => this.props.navigation.navigate('Chatbot')}
+              title='Discuss the Pomodoro technique'
+              style={{width: 300, marginTop: 20}} />
+              <Button
+              onPress={() => this.props.navigation.navigate('Chatbot')}
+              title='Discuss letters of gratitude'
+              style={{width: 300, marginTop: 20}} />
+              <Button
+              onPress={() => this.props.navigation.navigate('Chatbot')}
+              title='Discuss a morning jog'
+              style={{width: 300, marginTop: 20}} />
+            </View>
+          </ScrollView>
+        </View>
+      </ImageBackground>
     );
   }
 
@@ -90,7 +93,6 @@ export default class LandingScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   developmentModeText: {
     marginBottom: 20,

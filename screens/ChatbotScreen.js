@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StyleSheet,
@@ -58,20 +59,22 @@ export default class ChatbotScreen extends React.Component {
         />
     );
     return (
-      <View style={styles.container}>
-        <Header
-          leftComponent={BackButton}
-          centerComponent={{ text: 'Discussion', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-        />
-        <GiftedChat
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          user={{
-            _id: 1,
-          }}
-        />
-      </View>
+      <ImageBackground source={require('../assets/images/background-2.jpeg')} style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <Header
+            leftComponent={BackButton}
+            centerComponent={{ text: 'Discussion', style: { color: '#fff' } }}
+            rightComponent={{ icon: 'home', color: '#fff' }}
+          />
+          <GiftedChat
+            messages={this.state.messages}
+            onSend={messages => this.onSend(messages)}
+            user={{
+              _id: 1,
+            }}
+          />
+        </View>
+      </ImageBackground>
     )
   }
 
@@ -113,7 +116,6 @@ export default class ChatbotScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   developmentModeText: {
     marginBottom: 20,

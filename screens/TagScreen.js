@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StyleSheet,
@@ -48,6 +49,7 @@ export default class TagScreen extends React.Component {
     const { selectedIndex, selectedIndex2, selectedIndex3 } = this.state
     
     return (
+      <ImageBackground source={require('../assets/images/background-2.jpeg')} style={{width: '100%', height: '100%'}}>
       <View style={styles.container}>
           <Text style={styles.getStartedText}>What do you want to work on?</Text> 
 
@@ -80,6 +82,7 @@ export default class TagScreen extends React.Component {
             title='Done'>
           </Button>
       </View>
+      </ImageBackground>
     );
   }
 
@@ -120,7 +123,6 @@ export default class TagScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   developmentModeText: {
     marginBottom: 20,
