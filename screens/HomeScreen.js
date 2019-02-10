@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StyleSheet,
@@ -19,27 +20,29 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/flower.jpg')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <Text style={styles.getStartedText}>FUNQ</Text> 
-          </View>
+      <ImageBackground source={require('../assets/images/background-1.jpeg')} style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={styles.welcomeContainer}>
+              <Image
+                source={
+                  __DEV__
+                    ? require('../assets/images/flower.jpg')
+                    : require('../assets/images/robot-prod.png')
+                }
+                style={styles.welcomeImage}
+              />
+              <Text style={styles.getStartedText}>FUNQ</Text> 
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Get Started.</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </View>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
+                <Text style={styles.helpLinkText}>Get Started.</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+      </ImageBackground>
     );
   }
 
@@ -80,7 +83,6 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   developmentModeText: {
     marginBottom: 20,
