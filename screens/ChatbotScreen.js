@@ -11,7 +11,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { Header } from 'react-native-elements';
+import { Header, Button } from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat'
 
 export default class ChatbotScreen extends React.Component {
@@ -51,10 +51,16 @@ export default class ChatbotScreen extends React.Component {
   }
 
   render() {
+    const BackButton = (
+      <Button
+          title="Back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+    );
     return (
       <View style={styles.container}>
         <Header
-          leftComponent={{ icon: 'menu', color: '#fff' }}
+          leftComponent={BackButton}
           centerComponent={{ text: 'Discussion', style: { color: '#fff' } }}
           rightComponent={{ icon: 'home', color: '#fff' }}
         />

@@ -22,7 +22,7 @@ export default class LandingScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-            <Text style={styles.getStartedText}>FUNQ</Text> 
+            <Text style={styles.getStartedText}>Good Afternoon, Cathy</Text> 
             <Image
               source={
                 __DEV__
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   getStartedText: {
     marginTop: 50,
-    fontSize: 50,
+    fontSize: 30,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 50,
     textAlign: 'center',
