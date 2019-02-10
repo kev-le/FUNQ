@@ -31,7 +31,7 @@ export default class SettingsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 0,
   },
   myProfileText: {
     marginTop: 0,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   image_view: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
   },
   profileImage: {
     width: 300,
