@@ -37,6 +37,7 @@ HomeStack.navigationOptions = {
 
 const GroupsStack = createStackNavigator({
   Groups: GroupsScreen,
+  Chatbot: ChatbotScreen,
 });
 
 GroupsStack.navigationOptions = {
