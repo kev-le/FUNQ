@@ -11,6 +11,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import { Button } from 'react-native-elements'
 
 export default class LandingScreen extends React.Component {
   static navigationOptions = {
@@ -34,9 +35,18 @@ export default class LandingScreen extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Chatbot')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Discuss the Pomodoro Technique</Text>
-            </TouchableOpacity>
+            <Button
+            onPress={() => this.props.navigation.navigate('Chatbot')}
+            title='Discuss the Pomodoro technique'
+            style={{width: 300, marginTop: 20}} />
+            <Button
+            onPress={() => this.props.navigation.navigate('Chatbot')}
+            title='Discuss letters of gratitude'
+            style={{width: 300, marginTop: 20}} />
+            <Button
+            onPress={() => this.props.navigation.navigate('Chatbot')}
+            title='Discuss a morning jog'
+            style={{width: 300, marginTop: 20}} />
           </View>
         </ScrollView>
       </View>

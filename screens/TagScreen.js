@@ -11,16 +11,20 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { ButtonGroup } from 'react-native-elements';
+import { ButtonGroup, Button, Icon  } from 'react-native-elements'
 
 
 export default class TagScreen extends React.Component {
   constructor () {
     super()
     this.state = {
-      selectedIndex: 2
+      selectedIndex: 2,
+      selectedIndex2: 2,
+      selectedIndex3: 2
     }
     this.updateIndex = this.updateIndex.bind(this)
+    this.updateIndex2 = this.updateIndex2.bind(this)
+    this.updateIndex3 = this.updateIndex3.bind(this)
   }
 
   static navigationOptions = {
@@ -30,10 +34,18 @@ export default class TagScreen extends React.Component {
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
   }
+  updateIndex2 (selectedIndex2) {
+    this.setState({selectedIndex2})
+  }
+  updateIndex3 (selectedIndex3) {
+    this.setState({selectedIndex3})
+  }
 
   render() {
-    const buttons = ['Hello', 'World', 'Buttons']
-    const { selectedIndex } = this.state
+    const buttons = ['Motivation', 'Productivity', 'Confidence']
+    const buttons2 = ['Energy', 'Calmness', 'Passion']
+    const buttons3 = ['Stress', 'Focus', 'Strength']
+    const { selectedIndex, selectedIndex2, selectedIndex3 } = this.state
     
     return (
       <View style={styles.container}>
@@ -45,10 +57,28 @@ export default class TagScreen extends React.Component {
             buttons={buttons}
             containerStyle={{height: 100}}
           />
+
+          <ButtonGroup
+            onPress={this.updateIndex2}
+            selectedIndex={selectedIndex2}
+            buttons={buttons2}
+            containerStyle={{height: 100}}
+          />
+
+          <ButtonGroup
+            onPress={this.updateIndex3}
+            selectedIndex={selectedIndex3}
+            buttons={buttons3}
+            containerStyle={{height: 100}}
+          />
  
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Landing')} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Done</Text>
-          </TouchableOpacity>
+          <Button
+            icon={<Icon name='code' color='#ffffff' />}
+            onPress={() => this.props.navigation.navigate('Landing')}
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 20}}
+            title='Done'>
+          </Button>
       </View>
     );
   }

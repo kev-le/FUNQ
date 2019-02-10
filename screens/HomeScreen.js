@@ -20,14 +20,14 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={require('../assets/images/background-1.jpeg')} style={{width: '100%', height: '100%'}}>
+      <ImageBackground source={require('../assets/images/background-2.jpeg')} style={{width: '100%', height: '100%'}}>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
               <Image
                 source={
                   __DEV__
-                    ? require('../assets/images/flower.jpg')
+                    ? require('../assets/images/leaf.png')
                     : require('../assets/images/robot-prod.png')
                 }
                 style={styles.welcomeImage}
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
   },
   welcomeImage: {
     zIndex: -1,
-    width: 200,
-    height: 300,
+    width: 300,
+    height: 400,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    marginTop: 50,
+    marginTop: 10,
     fontSize: 50,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 50,
