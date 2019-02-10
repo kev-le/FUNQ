@@ -2,9 +2,9 @@ import React from 'react';
 import { ScrollView, StyleSheet, FlatList, View, Text, Image, ImageBackground  } from 'react-native';
 import { Card, ListItem, Button, Icon, Avatar } from 'react-native-elements'
 
-export default class SettingsScreen extends React.Component {
+export default class GroupMemberScreen extends React.Component {
   static navigationOptions = {
-    title: 'Profile',
+    title: 'GroupMember',
   };
 
   render() {
@@ -12,12 +12,12 @@ export default class SettingsScreen extends React.Component {
       <ImageBackground source={require('../assets/images/background-2.jpeg')} style={{width: '100%', height: '100%'}}>
         <ScrollView style={styles.container}>
           <View style={styles.image_view}>
-            <Avatar rounded source={require('../assets/images/robot-dev.png')} size="xlarge"  />
+            <Avatar rounded source={require('../assets/images/stress2.png')} size="xlarge"  />
           </View>
-          <Text style={styles.myProfileText}>Cathy Ruthsworth</Text>
+          <Text style={styles.myProfileText}>_VanGroove</Text>
           <View style={styles.profileImageView}>
             <Image
-              source={require('../assets/images/cathy.png')}
+              source={require('../assets/images/web.png')}
               style={styles.profileImage}
             />
           </View>

@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 0,
   },
   welcomeContainer: {
     zIndex: 1,
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 20,
   },
   welcomeImage: {

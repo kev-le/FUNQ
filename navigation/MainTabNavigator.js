@@ -10,6 +10,7 @@ import StartupScreen from '../screens/StartupScreen';
 import ChatbotScreen from '../screens/ChatbotScreen';
 import LandingScreen from '../screens/LandingScreen';
 import TagScreen from '../screens/TagScreen';
+import GroupMemberScreen from '../screens/GroupMemberScreen';
 
 
 const HomeStack = createStackNavigator({
@@ -17,6 +18,7 @@ const HomeStack = createStackNavigator({
   Chatbot: ChatbotScreen,
   Landing: LandingScreen,
   Tags: TagScreen,
+  GroupMember: GroupMemberScreen,
 });
 
 HomeStack.navigationOptions = {
@@ -53,6 +55,20 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Profile',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
+    />
+  ),
+};
+
+const GroupMemberStack = createStackNavigator({
+  GroupMember: GroupMemberScreen,
+});
+
+GroupMemberScreen.navigationOptions = {
+  tabBarLabel: 'GroupMember',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

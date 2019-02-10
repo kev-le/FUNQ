@@ -132,12 +132,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 0,
   },
   welcomeContainer: {
     zIndex: 1,
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -164,10 +164,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    marginTop: 90,
-    fontSize: 50,
+    marginTop: 50,
+    fontSize: 36,
     color: 'rgba(96,100,109, 1)',
-    lineHeight: 50,
+    lineHeight: 36,
     textAlign: 'center',
   },
   tabBarInfoContainer: {

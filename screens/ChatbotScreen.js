@@ -13,7 +13,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import { Header, Button } from 'react-native-elements';
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class ChatbotScreen extends React.Component {
   static navigationOptions = {
@@ -24,6 +24,8 @@ export default class ChatbotScreen extends React.Component {
     super(props);
   }
 
+  
+
   state = {
     messages: [],
   }
@@ -33,12 +35,32 @@ export default class ChatbotScreen extends React.Component {
       messages: [
         {
           _id: 1,
-          text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
+          text: 'Sounds cool! Will try it when I work on my project today',
           createdAt: new Date(),
           user: {
             _id: 2,
             name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
+            avatar: require('../assets/images/stress1.png'),
+          },
+        },
+        {
+          _id: 2,
+          text: 'Anyone going to try this today?',
+          createdAt: new Date(2019, 1, 10, 11, 1),
+          user: {
+            _id: 3,
+            name: 'React Native',
+            avatar: require('../assets/images/stress2.png'),
+          },
+        },
+        {
+          _id: 3,
+          text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
+          createdAt: new Date(2019, 1, 10, 10, 32),
+          user: {
+            _id: 4,
+            name: 'React Native',
+            avatar: require('../assets/images/robot-dev.png'),
           },
         },
       ],
@@ -46,12 +68,22 @@ export default class ChatbotScreen extends React.Component {
   }
 
   onSend(messages = []) {
+    console.log('send')
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
   }
 
+  onPressAvatar(messages = []) {
+    console.log('hello world');
+    console.log(messages);
+    //foo.goBack();
+    messages.navigate('GroupMember');
+  }
+
+
   render() {
+    console.log('wtf');
     const BackButton = (
       <Button
           title="Back"
@@ -69,6 +101,7 @@ export default class ChatbotScreen extends React.Component {
           <GiftedChat
             messages={this.state.messages}
             onSend={messages => this.onSend(messages)}
+            onPressAvatar={messages => this.onPressAvatar(this.props.navigation)}
             user={{
               _id: 1,
             }}
