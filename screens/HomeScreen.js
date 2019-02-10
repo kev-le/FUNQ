@@ -126,10 +126,12 @@ const styles = StyleSheet.create({
     color: 'rgba(96,100,109, 1)',
     lineHeight: 18,
     textAlign: 'center',
+    marginHorizontal: 80,
   },
   descriptionText: {
     padding: 12,
-    textAlign: 'center'
+    //textAlign: 'center',
+    marginHorizontal: 30,
   },
   tabBarInfoContainer: {
     position: 'absolute',

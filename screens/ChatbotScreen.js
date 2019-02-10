@@ -35,7 +35,7 @@ export default class ChatbotScreen extends React.Component {
       messages: [
         {
           _id: 5,
-          text: 'Yeah, it was pretty hard to get started, but it ended up being really insightful to me',
+          text: 'Yeah, it was pretty hard to get started, but it really helped highlight the things I appreciate',
           createdAt: new Date(2019, 1, 10, 11, 31),
           user: {
             _id: 4,
