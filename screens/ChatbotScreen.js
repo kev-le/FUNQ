@@ -13,7 +13,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import { Header, Button } from 'react-native-elements';
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class ChatbotScreen extends React.Component {
   static navigationOptions = {
@@ -24,6 +24,8 @@ export default class ChatbotScreen extends React.Component {
     super(props);
   }
 
+  
+
   state = {
     messages: [],
   }
@@ -32,19 +34,9 @@ export default class ChatbotScreen extends React.Component {
     this.setState({
       messages: [
         {
-          _id: 4,
-          text: 'Awesome!',
-          createdAt: new Date(),
-          user: {
-            _id: 5,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/143/143/any',
-          },
-        },
-        {
-          _id: 3,
-          text: 'I agree, this technique has made my day to day tasks easier to focus on',
-          createdAt: new Date(),
+          _id: 5,
+          text: 'Yeah, it was pretty hard to get started, but it ended up being really insightful to me',
+          createdAt: new Date(2019, 1, 10, 11, 31),
           user: {
             _id: 4,
             name: 'React Native',
@@ -52,9 +44,9 @@ export default class ChatbotScreen extends React.Component {
           },
         },
         {
-          _id: 2,
-          text: 'Pomodoro has helped me be so much more productive!',
-          createdAt: new Date(),
+          _id: 4,
+          text: 'Anyone having difficulty with this one?',
+          createdAt: new Date(2019, 1, 10, 11, 19),
           user: {
             _id: 3,
             name: 'React Native',
@@ -62,13 +54,33 @@ export default class ChatbotScreen extends React.Component {
           },
         },
         {
-          _id: 1,
-          text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
-          createdAt: new Date(),
+          _id: 3,
+          text: 'Sounds interesting! Will try it after work today',
+          createdAt: new Date(2019, 1, 10, 11, 18),
           user: {
             _id: 2,
             name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
+            avatar: require('../assets/images/stress1.png'),
+          },
+        },
+        {
+          _id: 2,
+          text: 'Anyone going to try this today?',
+          createdAt: new Date(2019, 1, 10, 11, 1),
+          user: {
+            _id: 3,
+            name: 'React Native',
+            avatar: require('../assets/images/stress2.png'),
+          },
+        },
+        {
+          _id: 1,
+          text: 'Try writing 3 letters of gratitude to yourself, a friend, a family member, and then send them!',
+          createdAt: new Date(2019, 1, 10, 10, 32),
+          user: {
+            _id: 4,
+            name: 'React Native',
+            avatar: require('../assets/images/robot-dev.png'),
           },
         },
       ],
@@ -76,12 +88,21 @@ export default class ChatbotScreen extends React.Component {
   }
 
   onSend(messages = []) {
+    console.log('send')
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
   }
 
+  onPressAvatar(messages = []) {
+    console.log('hello world');
+    console.log(messages);
+    messages.navigate('GroupMember');
+  }
+
+
   render() {
+    console.log('wtf');
     const BackButton = (
       <Button
           title="Back"
@@ -99,6 +120,7 @@ export default class ChatbotScreen extends React.Component {
           <GiftedChat
             messages={this.state.messages}
             onSend={messages => this.onSend(messages)}
+            onPressAvatar={messages => this.onPressAvatar(this.props.navigation)}
             user={{
               _id: 1,
             }}
