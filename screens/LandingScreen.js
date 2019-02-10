@@ -12,7 +12,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
-export default class HomeScreen extends React.Component {
+export default class LandingScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
+            <Text style={styles.getStartedText}>FUNQ</Text> 
             <Image
               source={
                 __DEV__
@@ -30,23 +31,14 @@ export default class HomeScreen extends React.Component {
               }
               style={styles.welcomeImage}
             />
-            <Text style={styles.getStartedText}>FUNQ</Text> 
           </View>
 
           <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Get Started.</Text>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Chatbot')} style={styles.helpLink}>
+              <Text style={styles.helpLinkText}>Discuss the Pomodoro Technique</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }

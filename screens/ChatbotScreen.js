@@ -11,45 +11,64 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import { Header } from 'react-native-elements';
+import { GiftedChat } from 'react-native-gifted-chat'
 
-export default class HomeScreen extends React.Component {
+export default class ChatbotScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    messages: [],
+  }
+
+  componentWillMount() {
+    this.setState({
+      messages: [
+        {
+          _id: 1,
+          text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
+        },
+      ],
+    })
+  }
+
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/flower.jpg')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <Text style={styles.getStartedText}>FUNQ</Text> 
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Get Started.</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
+        <Header
+          leftComponent={{ icon: 'menu', color: '#fff' }}
+          centerComponent={{ text: 'Discussion', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+        />
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+        />
       </View>
-    );
+    )
   }
+
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
@@ -135,6 +154,9 @@ const styles = StyleSheet.create({
     color: 'rgba(96,100,109, 1)',
     lineHeight: 50,
     textAlign: 'center',
+  },
+  sliderText: {
+    fontSize: 18,
   },
   tabBarInfoContainer: {
     position: 'absolute',

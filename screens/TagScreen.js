@@ -11,42 +11,44 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import { ButtonGroup } from 'react-native-elements';
 
-export default class HomeScreen extends React.Component {
+
+export default class TagScreen extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      selectedIndex: 2
+    }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+
   static navigationOptions = {
     header: null,
   };
 
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+  }
+
   render() {
+    const buttons = ['Hello', 'World', 'Buttons']
+    const { selectedIndex } = this.state
+    
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/flower.jpg')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <Text style={styles.getStartedText}>FUNQ</Text> 
-          </View>
+          <Text style={styles.getStartedText}>What do you want to work on?</Text> 
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Get Started.</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
+          <ButtonGroup
+            onPress={this.updateIndex}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{height: 100}}
+          />
+ 
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Landing')} style={styles.helpLink}>
+            <Text style={styles.helpLinkText}>Done</Text>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   getStartedText: {
-    marginTop: 50,
+    marginTop: 90,
     fontSize: 50,
     color: 'rgba(96,100,109, 1)',
     lineHeight: 50,

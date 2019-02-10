@@ -11,41 +11,30 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
+export default class StartupScreen extends React.Component {
+  static  = {
     header: null,
   };
 
   render() {
+    console.log(this.props);
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/flower.jpg')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <Text style={styles.getStartedText}>FUNQ</Text> 
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Tags')} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Get Started.</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
+        <View style={styles.welcomeContainer}>
+          <Image
+            source={
+              __DEV__
+                ? require('../assets/images/flower.jpg')
+                : require('../assets/images/robot-prod.png')
+            }
+            style={styles.welcomeImage}
+          />
+          <Text style={styles.getStartedText}>TEST STARTUP</Text> 
+          <Text onPress={() => this.props.navigation.navigate('Sliders')} style={styles.helpLinkText}>
+            Get Started!
+          </Text>
         </View>
       </View>
     );
