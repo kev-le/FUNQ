@@ -12,12 +12,23 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { Button} from 'react-native-elements';
+import { Button, CheckBox } from 'react-native-elements';
+import Modal from 'react-native-modal';
 
 export default class LandingScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  state = {
+    isModalVisible: false,
+    goal1: false,
+    goal2: false,
+    goal3: false,
+  };
+
+  _toggleModal = () =>
+    this.setState({ isModalVisible: !this.state.isModalVisible });
 
   render() {
     return (
@@ -26,6 +37,9 @@ export default class LandingScreen extends React.Component {
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
               <Text style={styles.getStartedText}>Good Afternoon, Cathy</Text> 
+              <TouchableOpacity onPress={this._toggleModal}>
+                <Text>View Weekly Goals</Text>
+              </TouchableOpacity>
               <Image
                 source={
                   __DEV__
@@ -53,6 +67,33 @@ export default class LandingScreen extends React.Component {
             </View>
           </ScrollView>
         </View>
+        <Modal isVisible={this.state.isModalVisible} style={styles.modal} onBackdropPress={() => this.setState({ isVisible: false })} >
+          <View style={{ flex: 1 }}>
+            <Text style={styles.getStartedText}>Your Weekly Goals</Text>
+            <CheckBox
+              title='Drink an average of 3 cups of water a day'
+              checked={this.state.goal1}
+              onPress={() => this.setState({ goal1: !this.state.goal1})}
+            />
+            <CheckBox
+              title='Get at least two hours of exercise this week'
+              checked={this.state.goal2}
+              onPress={() => this.setState({ goal2: !this.state.goal2})}
+            />
+            <CheckBox
+              title='Get consistent sleep'
+              checked={this.state.goal3}
+              onPress={() => this.setState({ goal3: !this.state.goal3})}
+            />
+            <View style={{flex: 1, justifyContent: 'flex-end'}}>
+              <Button
+                onPress={this._toggleModal}
+                backgroundColor='#03A9F4'
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                title='Done' />
+            </View>
+          </View>
+        </Modal>
       </ImageBackground>
     );
   }
@@ -92,6 +133,11 @@ export default class LandingScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  modal: {
+    backgroundColor: 'white',
+    maxHeight: 500,
+    marginTop: 150,
+  },
   container: {
     flex: 1,
   },
