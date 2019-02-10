@@ -34,17 +34,7 @@ export default class ChatbotScreen extends React.Component {
     this.setState({
       messages: [
         {
-          _id: 4,
-          text: 'Awesome!',
-          createdAt: new Date(),
-          user: {
-            _id: 5,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/143/143/any',
-          },
-        },
-        {
-          _id: 3,
+          _id: 5,
           text: 'I agree, this technique has made my day to day tasks easier to focus on',
           createdAt: new Date(),
           user: {
@@ -54,7 +44,7 @@ export default class ChatbotScreen extends React.Component {
           },
         },
         {
-          _id: 2,
+          _id: 4,
           text: 'Pomodoro has helped me be so much more productive!',
           createdAt: new Date(),
           user: {
@@ -64,7 +54,7 @@ export default class ChatbotScreen extends React.Component {
           },
         },
         {
-          _id: 1,
+          _id: 3,
           text: 'Sounds cool! Will try it when I work on my project today',
           createdAt: new Date(),
           user: {
@@ -84,7 +74,7 @@ export default class ChatbotScreen extends React.Component {
           },
         },
         {
-          _id: 3,
+          _id: 1,
           text: 'Try Pomodoro for a week! Stay focused for an activity for 30 minutes then take a 10 minute break',
           createdAt: new Date(2019, 1, 10, 10, 32),
           user: {

@@ -20,6 +20,12 @@ export default class GroupMemberScreen extends React.Component {
               source={require('../assets/images/web.png')}
               style={styles.profileImage}
             />
+            <Button
+              icon={<Icon name='code' color='#ffffff' />}
+              onPress={() => this.props.navigation.navigate('Chatbot')}
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: -40}}
+              title='Start a conversation' />
           </View>
         </ScrollView>
       </ImageBackground>
@@ -31,7 +37,7 @@ export default class GroupMemberScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 0,
   },
   myProfileText: {
     marginTop: 0,
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
   },
   image_view: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
   },
   profileImage: {
     width: 300,
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
   },
   profileImageView: {
     alignItems: 'center',
-    marginTop: -10,
+    marginTop: -30,
   }
 });
 
